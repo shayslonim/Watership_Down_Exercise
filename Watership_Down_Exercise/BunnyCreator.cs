@@ -13,11 +13,11 @@ namespace Watership_Down_Exercise
         public Bunny CreateBunny()
         {
             Bunny bunny;
-            //Generate a random color
             Bunny.Color randomColor;
             //Get a random number between 1 and 4
             int randomNumber = random.Next(5);
 
+            //Generate a random color
             switch (randomNumber)
             {
                 case 1:

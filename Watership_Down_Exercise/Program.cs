@@ -8,6 +8,7 @@ namespace Watership_Down_Exercise
 {
     class Program
     {
+        //The main program
         static void Main(string[] args)
         {
             List<Bunny> bunnies = new List<Bunny>();

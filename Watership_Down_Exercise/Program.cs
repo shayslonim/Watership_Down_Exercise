@@ -12,10 +12,10 @@ namespace Watership_Down_Exercise
         {
             List<Bunny> bunnies = new List<Bunny>();
             /* Create 5 bunnies */
-            BunnyCreator creator = new BunnyCreator();
+           
             for (int i = 0; i < 5; i++)
             {
-                Bunny newBunny = creator.CreateBunny();
+                Bunny newBunny = BunnyCreator.CreateBunny();
                 bunnies.Add(newBunny);
             }
         }

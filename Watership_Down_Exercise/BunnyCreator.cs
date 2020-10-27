@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Watership_Down_Exercise
 {
-    class BunnyCreator
+    static class BunnyCreator
     {
         private static readonly Random random = new Random();
-        public Bunny CreateBunny()
+        public static Bunny CreateBunny()
         {
             Bunny bunny;
             Bunny.Color randomColor;

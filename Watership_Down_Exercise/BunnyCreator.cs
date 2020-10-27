@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Watership_Down_Exercise
 {
+    //The BunnyCreator class is used to create bunnies
     static class BunnyCreator
     {
         private static readonly Random random = new Random();

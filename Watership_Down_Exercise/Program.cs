@@ -11,8 +11,8 @@ namespace Watership_Down_Exercise
         static void Main(string[] args)
         {
             List<Bunny> bunnies = new List<Bunny>();
+
             /* Create 5 bunnies */
-           
             for (int i = 0; i < 5; i++)
             {
                 Bunny newBunny = BunnyCreator.CreateBunny();

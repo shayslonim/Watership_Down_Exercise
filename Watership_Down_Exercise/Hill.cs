@@ -54,6 +54,7 @@ namespace Watership_Down_Exercise
                     bunniesList.RemoveAt(i);
                 }
 
+
             }
         }
 
@@ -66,6 +67,17 @@ namespace Watership_Down_Exercise
                     maleAdults.Add(bunny);
             }
             return maleAdults;
+        }
+
+        private List<Bunny> GetFemaleAdultBunnies()
+        {
+            List<Bunny> femaleAdults = new List<Bunny>();
+            foreach (Bunny bunny in this.bunniesList)
+            {
+                if (bunny.BunnySex == Sex.Female && bunny.Age >= ADULT_AGE)
+                    femaleAdults.Add(bunny);
+            }
+            return femaleAdults;
         }
 
     }

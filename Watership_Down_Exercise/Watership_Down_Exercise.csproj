@@ -45,6 +45,10 @@
   <ItemGroup>
     <Compile Include="Bunny.cs" />
     <Compile Include="BunnyCreator.cs" />
+    <Compile Include="Enum\Color.cs" />
+    <Compile Include="Enum\FemaleName.cs" />
+    <Compile Include="Enum\MaleName.cs" />
+    <Compile Include="Enum\Sex.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

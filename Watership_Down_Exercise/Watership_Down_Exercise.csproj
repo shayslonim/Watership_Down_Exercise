@@ -49,6 +49,7 @@
     <Compile Include="Enum\FemaleName.cs" />
     <Compile Include="Enum\MaleName.cs" />
     <Compile Include="Enum\Sex.cs" />
+    <Compile Include="Hill.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

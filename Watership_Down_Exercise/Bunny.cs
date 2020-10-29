@@ -34,10 +34,15 @@ namespace Watership_Down_Exercise
             private set { this.name = value; }
         }
 
+        public int Age { get { return age; }}
+
         //save the amount of names in a static variable instead of manually typing the amount of names.
         private readonly static int AMOUNT_OF_MALE_NAMES = System.Enum.GetValues(typeof(MaleName)).Length;
         private readonly static int AMOUNT_OF_FEMALE_NAMES = System.Enum.GetValues(typeof(FemaleName)).Length;
         private const int DEFAULT_AGE = 0;
+
+
+
         private const int AMOUNT_OF_SEX_OPTIONS = 2;
 
 
@@ -52,22 +57,38 @@ namespace Watership_Down_Exercise
             this.sex = (Sex)random.Next(AMOUNT_OF_SEX_OPTIONS);
 
             this.color = color;
-
             this.age = DEFAULT_AGE;
+            this.name = GenerateRandomName(this.sex);
 
-            /* Give the bunny a random name from the name-lists according to its sex */
-            if (this.sex == Sex.Male)
+        }
+
+        public Bunny(Sex bunnySex, Color color)
+        {
+            this.sex = bunnySex;
+            this.color = color;
+            this.age = DEFAULT_AGE;
+            this.name = GenerateRandomName(this.sex);
+
+
+        }
+        public void GrowAYear()
+        {
+            this.age++;
+        }
+
+        private static string GenerateRandomName(Sex sex)
+        {
+            /* Generate a random name from the name-lists according to its sex */
+            if (sex == Sex.Male)
             {
                 MaleName bunnyName = (MaleName)random.Next(AMOUNT_OF_MALE_NAMES);
-                this.name = bunnyName.ToString();
+                return bunnyName.ToString();
             }
             else
             {
                 FemaleName bunnyName = (FemaleName)random.Next(AMOUNT_OF_FEMALE_NAMES);
-                this.name = bunnyName.ToString();
+                return bunnyName.ToString();
             }
-
         }
-
     }
 }

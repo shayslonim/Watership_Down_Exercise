@@ -13,69 +13,62 @@ namespace Watership_Down_Exercise
     {
         private static readonly Random random = new Random();
 
-        private Sex sex;
-        private Color color;
-        private int age;
-        private string name;
+        public Sex BunnySex { get; private set; }
+        public Color BunnyColor { get; private set; }
+        public string BunnyName { get; private set; }
 
-        public Sex BunnySex
-        {
-            get { return this.sex; }
-            private set { this.sex = value; }
-        }
-        public Color BunnyColor
-        {
-            get { return this.color; }
-            private set { this.color = value; }
-        }
-        public string BunnyName
-        {
-            get { return this.name; }
-            private set { this.name = value; }
-        }
-
-        public int Age { get { return age; }}
+        public int Age { get; private set; }
 
         //save the amount of names in a static variable instead of manually typing the amount of names.
         private readonly static int AMOUNT_OF_MALE_NAMES = System.Enum.GetValues(typeof(MaleName)).Length;
         private readonly static int AMOUNT_OF_FEMALE_NAMES = System.Enum.GetValues(typeof(FemaleName)).Length;
+
         private const int DEFAULT_AGE = 0;
-
-
-
         private const int AMOUNT_OF_SEX_OPTIONS = 2;
 
 
         /// <summary>
-        /// Create a new bunny from the given params
+        /// Create a new bunny from the given color. Generate a random sex and name.
         /// </summary>
         /// <param name="color"> The bunny's color </param>
         /// <returns> A new bunny with the given properties </returns>
         public Bunny(Color color)
         {
             //Generate the bunny's sex (0 -> male, 1 -> female)
-            this.sex = (Sex)random.Next(AMOUNT_OF_SEX_OPTIONS);
+            this.BunnySex = (Sex)random.Next(AMOUNT_OF_SEX_OPTIONS);
 
-            this.color = color;
-            this.age = DEFAULT_AGE;
-            this.name = GenerateRandomName(this.sex);
+            this.BunnyColor = color;
+            this.Age = DEFAULT_AGE;
+            this.BunnyName = GenerateRandomName(this.BunnySex);
 
         }
-
+        /// <summary>
+        /// Create a new bunny from the given params. Generate a random name.
+        /// </summary>
+        /// <param name="bunnySex">the bunny's sex</param>
+        /// <param name="color">the bunny's color</param>
         public Bunny(Sex bunnySex, Color color)
         {
-            this.sex = bunnySex;
-            this.color = color;
-            this.age = DEFAULT_AGE;
-            this.name = GenerateRandomName(this.sex);
+            this.BunnySex = bunnySex;
+            this.BunnyColor = color;
+            this.Age = DEFAULT_AGE;
+            this.BunnyName = GenerateRandomName(this.BunnySex);
 
 
         }
+        /// <summary>
+        /// Simulate the growth of the bunny by a year
+        /// </summary>
         public void GrowAYear()
         {
-            this.age++;
+            this.Age++;
         }
 
+        /// <summary>
+        /// An auxiliary static function that generates the bunny's random sex.
+        /// </summary>
+        /// <param name="sex"></param>
+        /// <returns></returns>
         private static string GenerateRandomName(Sex sex)
         {
             /* Generate a random name from the name-lists according to its sex */

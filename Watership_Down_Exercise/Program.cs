@@ -11,15 +11,18 @@ namespace Watership_Down_Exercise
         //The main program
         static void Main(string[] args)
         {
-            const int NUMBER_OF_BUNNIES = 5;
-            List<Bunny> bunnies = new List<Bunny>();
-
-            /* Create the bunnies */
-            for (int i = 0; i < NUMBER_OF_BUNNIES; i++)
+            Hill hill = new Hill();
+            //Start the hill
+            hill.RunAYear();
+            //Run another year by clicking the enter key. Any other key will be ignored.
+            while (true)
             {
-                Bunny newBunny = BunnyCreator.CreateBunny();
-                bunnies.Add(newBunny);
+                if (Console.ReadKey().Key == ConsoleKey.Enter)
+                {
+                    hill.RunAYear();
+                }
             }
+
         }
     }
 }

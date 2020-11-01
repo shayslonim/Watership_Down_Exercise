@@ -24,8 +24,6 @@ namespace Watership_Down_Exercise
             randomColor = GenerateRandomBunnyColor();
             bunny = new Bunny(randomColor);
 
-            //[Male/Female] [Black/Brown/Spotted/White] Bunny [Name] Was born!
-            Console.WriteLine(bunny.BunnySex + " " + bunny.BunnyColor + " Bunny " + bunny.BunnyName + " Was born!");
             return bunny;
         }
 
@@ -39,7 +37,19 @@ namespace Watership_Down_Exercise
             bunny = new Bunny(bunnySex, randomColor);
 
             //[Male/Female] [Black/Brown/Spotted/White] Bunny [Name] Was born!
-            Console.WriteLine(bunny.BunnySex + " " + bunny.BunnyColor + " Bunny " + bunny.BunnyName + " Was born!");
+            //Console.WriteLine(bunny.BunnySex + " " + bunny.BunnyColor + " Bunny " + bunny.BunnyName + " Was born!");
+            return bunny;
+        }
+
+        public static Bunny CreateBunny(Color color)
+        {
+            Bunny bunny;
+
+            //Create the bunny with the random color
+            bunny = new Bunny(color);
+
+            //[Male/Female] [Black/Brown/Spotted/White] Bunny [Name] Was born!
+            //Console.WriteLine(bunny.BunnySex + " " + bunny.BunnyColor + " Bunny " + bunny.BunnyName + " Was born!");
             return bunny;
         }
 

@@ -10,37 +10,37 @@ namespace Watership_Down_Exercise
     /// </summary>
     class Hill
     {
-        private ICollection<Bunny> bunniesList;
-        int maleBunniesCount;
-        int femaleBunniesCount;
+        private ICollection<Bunny> _bunniesList;
+        private int _maleBunniesCount;
+        private int _femaleBunniesCount;
 
         private const int MALE_INITIAL_POPULATION = 2;
         private const int FEMALE_INITIAL_POPULATION = 3;
         private const int ADULT_AGE = 2;
-        private const int LIFESPAN = 3;
+        private const int LIFESPAN = 10;
 
         /// <summary>
         /// Create the the initial state of the hill.
         /// </summary>
         public Hill()
         {
-            this.maleBunniesCount = 0;
-            this.femaleBunniesCount = 0;
+            this._maleBunniesCount = 0;
+            this._femaleBunniesCount = 0;
 
-            this.bunniesList = new HashSet<Bunny>();
+            this._bunniesList = new HashSet<Bunny>();
 
             //Create the initial male bunnies
             for (int i = 0; i < MALE_INITIAL_POPULATION; i++)
             {
                 Bunny maleBunny = BunnyCreator.CreateBunny(Sex.Male);
-                bunniesList.Add(maleBunny);
+                _bunniesList.Add(maleBunny);
             }
 
             //Create the initial female bunnies
             for (int i = 0; i < FEMALE_INITIAL_POPULATION; i++)
             {
                 Bunny femaleBunny = BunnyCreator.CreateBunny(Sex.Female);
-                bunniesList.Add(femaleBunny);
+                _bunniesList.Add(femaleBunny);
             }
 
         }
@@ -50,9 +50,9 @@ namespace Watership_Down_Exercise
         public void RunAYear()
         {
             HashSet<Bunny> deadBunniesList = new HashSet<Bunny>();
-            for (int i = 0; i < bunniesList.Count; i++)
+            for (int i = 0; i < _bunniesList.Count; i++)
             {
-                Bunny curBunny = bunniesList.ElementAt(i);
+                Bunny curBunny = _bunniesList.ElementAt(i);
                 //Make each bunny a year older
                 curBunny.GrowAYear();
 
@@ -66,12 +66,12 @@ namespace Watership_Down_Exercise
             //Remove all the dead bunnies
             foreach (Bunny bunny in deadBunniesList)
             {
-                this.bunniesList.Remove(bunny);
+                this._bunniesList.Remove(bunny);
             }
 
             /*Mate the bunnies to create new bunnies*/
-            ICollection<Bunny> maleAdultBunnies = this.GetMaleAdultBunnies();
-            ICollection<Bunny> femaleAdultBunnies = this.GetFemaleAdultBunnies();
+            IEnumerable<Bunny> maleAdultBunnies = this.GetMaleAdultBunnies();
+            IEnumerable<Bunny> femaleAdultBunnies = this.GetFemaleAdultBunnies();
             ICollection<Bunny> newBunniesList = new HashSet<Bunny>();
             foreach (Bunny fatherBunny in maleAdultBunnies)
             {
@@ -79,14 +79,14 @@ namespace Watership_Down_Exercise
                 {
                     Color motherColor = motherBunny.BunnyColor;
                     Bunny babyBunny = BunnyCreator.CreateBunny(motherColor);
-                    bunniesList.Add(babyBunny);
+                    this._bunniesList.Add(babyBunny);
                     newBunniesList.Add(babyBunny);
                 }
             }
 
             //Print the current state
             this.UpdateBunniesCount();
-            Console.WriteLine("There are " + this.maleBunniesCount + " male bunnies, " + this.femaleBunniesCount + " female bunnies (total of " + this.bunniesList.Count + " bunnies).");
+            Console.WriteLine("There are " + this._maleBunniesCount + " male bunnies, " + this._femaleBunniesCount + " female bunnies (total of " + this._bunniesList.Count + " bunnies).");
             foreach (Bunny bunny in deadBunniesList)
             {
                 Console.WriteLine("Bunny " + bunny.BunnyName + " died :(");
@@ -101,30 +101,20 @@ namespace Watership_Down_Exercise
         /// Return a list of all the adult male bunnies
         /// </summary>
         /// <returns></returns>
-        private ICollection<Bunny> GetMaleAdultBunnies()
+        private IEnumerable<Bunny> GetMaleAdultBunnies()
         {
-            ICollection<Bunny> maleAdults = new List<Bunny>();
-            foreach (Bunny bunny in this.bunniesList)
-            {
-                if (bunny.BunnySex == Sex.Male && bunny.Age >= ADULT_AGE)
-                    maleAdults.Add(bunny);
-            }
-            return maleAdults;
+            IEnumerable<Bunny> maleAdults = this._bunniesList.Where(bunny => bunny.BunnySex == Sex.Male && bunny.Age >= ADULT_AGE);
+            return maleAdults.ToList();
         }
 
         /// <summary>
         /// Return a list of all the adult female bunnies
         /// </summary>
         /// <returns></returns>
-        private ICollection<Bunny> GetFemaleAdultBunnies()
+        private IEnumerable<Bunny> GetFemaleAdultBunnies()
         {
-            ICollection<Bunny> femaleAdults = new List<Bunny>();
-            foreach (Bunny bunny in this.bunniesList)
-            {
-                if (bunny.BunnySex == Sex.Female && bunny.Age >= ADULT_AGE)
-                    femaleAdults.Add(bunny);
-            }
-            return femaleAdults;
+            IEnumerable<Bunny> femaleAdults = this._bunniesList.Where(bunny => bunny.BunnySex == Sex.Female && bunny.Age >= ADULT_AGE);
+            return femaleAdults.ToList();
         }
 
         /// <summary>
@@ -134,7 +124,7 @@ namespace Watership_Down_Exercise
         {
             int malesCount = 0;
             int femalesCount = 0;
-            foreach (Bunny bunny in this.bunniesList)
+            foreach (Bunny bunny in this._bunniesList)
             {
                 if (bunny.BunnySex == Sex.Male)
                 {
@@ -145,8 +135,8 @@ namespace Watership_Down_Exercise
                     femalesCount++;
                 }
             }
-            this.maleBunniesCount = malesCount;
-            this.femaleBunniesCount = femalesCount;
+            this._maleBunniesCount = malesCount;
+            this._femaleBunniesCount = femalesCount;
         }
     }
 }

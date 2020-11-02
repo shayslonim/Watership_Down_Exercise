@@ -13,7 +13,7 @@ namespace Watership_Down_Exercise
     static class BunnyCreator
     {
         const int AMOUNT_OF_COLORS = 4;
-        private static readonly Random random = new Random();
+        private static readonly Random _random = new Random();
 
         public static Bunny CreateBunny()
         {
@@ -57,25 +57,9 @@ namespace Watership_Down_Exercise
         {
             Color randomColor;
             //Get a random number between 1 and 4
-            int randomNumber = random.Next(AMOUNT_OF_COLORS);
-            
-            //Generate a random color
-            switch (randomNumber)
-            {
-                case 0:
-                    randomColor = Color.Black;
-                    break;
-                case 1:
-                    randomColor = Color.Brown;
-                    break;
-                case 2:
-                    randomColor = Color.Spotted;
-                    break;
-                case 3:
-                default:
-                    randomColor = Color.White;
-                    break;
-            }
+            int randomNumber = _random.Next(AMOUNT_OF_COLORS);
+
+            randomColor = (Color)_random.Next(AMOUNT_OF_COLORS);
             return randomColor;
         }
     }

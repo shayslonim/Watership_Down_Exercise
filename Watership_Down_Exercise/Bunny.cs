@@ -71,17 +71,19 @@ namespace Watership_Down_Exercise
         /// <returns></returns>
         private static string GenerateRandomName(Sex sex)
         {
+            String chosenName;
             /* Generate a random name from the name-lists according to its sex */
             if (sex == Sex.Male)
             {
                 MaleName bunnyName = (MaleName)random.Next(AMOUNT_OF_MALE_NAMES);
-                return bunnyName.ToString();
+                chosenName =  bunnyName.ToString();
             }
             else
             {
                 FemaleName bunnyName = (FemaleName)random.Next(AMOUNT_OF_FEMALE_NAMES);
-                return bunnyName.ToString();
+               chosenName =  bunnyName.ToString();
             }
+            return chosenName;
         }
     }
 }

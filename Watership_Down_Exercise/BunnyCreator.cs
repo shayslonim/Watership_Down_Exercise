@@ -57,8 +57,6 @@ namespace Watership_Down_Exercise
         {
             Color randomColor;
             //Get a random number between 1 and 4
-            int randomNumber = _random.Next(AMOUNT_OF_COLORS);
-
             randomColor = (Color)_random.Next(AMOUNT_OF_COLORS);
             return randomColor;
         }

@@ -57,6 +57,23 @@ namespace Watership_Down_Exercise
 
         }
         /// <summary>
+        /// Create a new bunny from the given params
+        /// </summary>
+        /// <param name="sex">the bunny's sex</param>
+        /// <param name="color">the bunny's color</param>
+        /// <param name="name">the bunny's name</param>
+        /// <param name="age">the bunny's age</param>
+        public Bunny(Sex sex, Color color, string name, int age)
+        {
+            BunnySex = sex;
+            BunnyColor = color;
+            BunnyName = name;
+            Age = age;
+        }
+
+
+
+        /// <summary>
         /// Simulate the growth of the bunny by a year
         /// </summary>
         public void GrowAYear()
@@ -76,12 +93,12 @@ namespace Watership_Down_Exercise
             if (sex == Sex.Male)
             {
                 MaleName bunnyName = (MaleName)random.Next(AMOUNT_OF_MALE_NAMES);
-                chosenName =  bunnyName.ToString();
+                chosenName = bunnyName.ToString();
             }
             else
             {
                 FemaleName bunnyName = (FemaleName)random.Next(AMOUNT_OF_FEMALE_NAMES);
-               chosenName =  bunnyName.ToString();
+                chosenName = bunnyName.ToString();
             }
             return chosenName;
         }

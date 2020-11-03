@@ -24,9 +24,6 @@ namespace Watership_Down_Exercise
         /// </summary>
         public Hill()
         {
-            this._maleBunniesCount = 0;
-            this._femaleBunniesCount = 0;
-
             this._bunniesList = new HashSet<Bunny>();
 
             //Create the initial male bunnies
@@ -43,6 +40,14 @@ namespace Watership_Down_Exercise
                 _bunniesList.Add(femaleBunny);
             }
 
+        }
+        /// <summary>
+        /// Create a hill with an existing initial state
+        /// </summary>
+        /// <param name=""></param>
+        public Hill(ICollection<Bunny> bunnies)
+        {
+            this._bunniesList = bunnies;
         }
         /// <summary>
         /// Simulate one year on the hill

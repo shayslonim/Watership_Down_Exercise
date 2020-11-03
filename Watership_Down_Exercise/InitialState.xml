@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Bunnies>
+	<Bunny Name ="Jack" Sex="Male" Age ="0" Color="Black"></Bunny>
+	<Bunny Name ="Jackie" Sex="Female" Age ="1" Color="White"></Bunny>
+	<Bunny Name ="Jasmin" Sex="Female" Age ="4" Color="Spotted"></Bunny>
+</Bunnies>
+
